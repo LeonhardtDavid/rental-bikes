@@ -1,0 +1,29 @@
+@startuml
+
+interface Fare <<trait>> {
+  {abstract} {method} + price: BigDecimal
+}
+Fare <|.. FarePerHour
+Fare <|... FarePerDay
+Fare <|.. FarePerWeek
+Fare <|... FarePerFamily
+
+class FarePerHour {
+  + price: BigDecimal
+}
+
+class FarePerDay {
+  + price: BigDecimal
+}
+
+class FarePerWeek {
+  + price: BigDecimal
+}
+
+class FarePerFamily {
+  + qty: Int
+  + price: BigDecimal
+}
+FarePerFamily *--> Fare : fare
+
+@enduml
